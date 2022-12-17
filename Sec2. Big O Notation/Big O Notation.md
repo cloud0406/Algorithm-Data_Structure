@@ -44,3 +44,37 @@ function addUpToSecond(n) {
 
 같은 연산을 하지만 n에 크기에 상관없이 연산을 동일하게 3번함 (\*, +, /)
 n이 커질수록 첫 번째 코드보다 두 번째 코드가 연산 횟수가 현저히 적음을 확인할 수 있음.
+
+위의 두 함수를 빅오로 표현하면 다음과 같음
+첫 번째 함수인 addUpToFirst는 O(1) -> 어떠한 입력값 n이 들어와도 n에 상관없이 연산 수가 동일
+두 번째 함수인 addUpToSecond는 O(n) -> 입력값 n에 따라 반복 횟수가 선형적으로 증가
+
+```js
+function countUpAndDown(n) {
+  console.log("Going UP!");
+  for (let i = 0; i < n; i++) {
+    console.log(i);
+  }
+
+  console.log("At the top! Going Down...");
+  for (let j = n - 1; j >= 0; j--) {
+    console.log(j);
+  }
+}
+```
+
+위의 함수는 같은 작업을 거꾸로하는 두 반복문이 있음. 그렇기 때문에 O(2n)이라 생각할 수 있지만 큰 틀에서만 생각하면 O(n)임.
+
+```js
+function printAllPairs(n) {
+  for (var i = 0; i < n; i++) {
+    for (var j = 0; j < n; j++) {
+      console.log(i, j);
+    }
+  }
+}
+```
+
+위의 함수도 마찬가지로 n이 커질수록 시간이 증가되지만 반복문이 2개여서 O(2n)으로 표현하는 것이 아니라 중첩되어 있기 때문에 O(n\*n) -> 즉, O(n제곱)이 된다. 이 경우에는 n이 커질수록 실행 시간이 n제곱의 값으로 늘어나게 된다.
+
+위의 예시들에서부터 빅오란 기본적으로 입력인 n이 커질수록 알고리즘이 얼마나 효율적으로 표현하는 방식이라는 것을 기억하자.
