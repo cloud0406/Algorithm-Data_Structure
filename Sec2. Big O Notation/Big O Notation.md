@@ -124,3 +124,82 @@ function logAtMost5(n) {
 ```
 
 위의 함수는 입력값에 따라 0~5번 반복하므로 n이 커질수록 빅오는 상수라고 단순화 할 수 있음. 즉 O(1)로 표현 (반복문이 있다고 무조건 O(n)으로 표현하는 것이 아님)
+
+### Quiz1
+
+다음 빅오 표현식을 간단히 해라.
+
+1. O(n+10)
+
+   -> O(n)
+
+2. O(100\*n)
+
+   -> O(n)
+
+3. O(25)
+
+   -> O(1)
+
+4. O(n^2 + n^3)
+
+   -> O(n^3)
+
+5. O(n+n+n+n)
+
+   -> O(n)
+
+### Quiz2
+
+아래 함수에 대한 시간 복잡도를 구해라
+
+1. O(n)
+   ```js
+   function logUpTo(n) {
+     for (var i = 1; i <= n; i++) {
+       console.log(i);
+     }
+   }
+   ```
+2. O(1)
+   ```js
+   function logAtMost10(n) {
+     for (var i = 1; i <= Math.min(n, 10); i++) {
+       console.log(i);
+     }
+   }
+   ```
+3. O(n)
+   ```js
+   function logAtLeast10(n) {
+     for (var i = 1; i <= Math.max(n, 10); i++) {
+       console.log(i);
+     }
+   }
+   ```
+4. O(n)
+   ```js
+   function onlyElementsAtEvenIndex(array) {
+     var newArray = Array(Math.ceil(array.length / 2));
+     for (var i = 0; i < array.length; i++) {
+       if (i % 2 === 0) {
+         newArray[i / 2] = array[i];
+       }
+     }
+     return newArray;
+   }
+   ```
+5. O(n^2)
+   ```js
+   function subtotals(array) {
+     var subtotalArray = Array(array.length);
+     for (var i = 0; i < array.length; i++) {
+       var subtotal = 0;
+       for (var j = 0; j <= i; j++) {
+         subtotal += array[j];
+       }
+       subtotalArray[i] = subtotal;
+     }
+     return subtotalArray;
+   }
+   ```
