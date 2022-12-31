@@ -241,3 +241,67 @@ function double(arr) {
 ```
 
 입력된 arr 배열의 길이에 따라 새로운 배열에 저장 되는 아이템 개수가 정해진다. 즉, 차지 하는 공간은 입력된 배열의 크기와 비례해 커지게 된다. -> O(n)
+
+### Quiz3
+
+아래 함수에 대한 공간 복잡도는?
+
+1. O(1) -> 선언 부분(공간 할당)이 i=1 부분밖에 없음
+
+```js
+function logUpTo(n) {
+  for (let i = 1; i <= n; i++) {
+    console.log(i);
+  }
+}
+```
+
+2. O(1)
+
+```js
+function logAtMost10(n) {
+  for (var i = 1; i <= Math.min(n, 10); i++) {
+    console.log(i);
+  }
+}
+```
+
+3. O(1)
+
+```js
+function logAtMost10(n) {
+  for (var i = 1; i <= Math.min(n, 10); i++) {
+    console.log(i);
+  }
+}
+```
+
+4. O(n) -> 배열 array의 길이에 따라 공간 할당이 달라짐 (newArray = ~ )
+
+```js
+function onlyElementsAtEvenIndex(array) {
+  var newArray = Array(Math.ceil(array.length / 2));
+  for (var i = 0; i < array.length; i++) {
+    if (i % 2 === 0) {
+      newArray[i / 2] = array[i];
+    }
+  }
+  return newArray;
+}
+```
+
+5. O(n) -> 시간 복잡도가 아닌 공간 복잡도의 개념으로 보면 공간 할당 영역에 영향을 끼치는 것은 subtotalArray, i, j 선언 부분이며 subtotatlArray는 배열의 길이에 따라 공간 할당 영역이 바뀐다.
+
+```js
+function subtotals(array) {
+  var subtotalArray = Array(array.length);
+  for (var i = 0; i < array.length; i++) {
+    var subtotal = 0;
+    for (var j = 0; j <= i; j++) {
+      subtotal += array[j];
+    }
+    subtotalArray[i] = subtotal;
+  }
+  return subtotalArray;
+}
+```
